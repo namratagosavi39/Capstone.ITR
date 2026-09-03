@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="EMS.Entities/EMS.Entities.csproj" />
+  <Project Path="EMS.Repositories/EMS.Repositories.csproj" />
+  <Project Path="EMS.UI/EMS.UI.csproj" />
+</Solution>

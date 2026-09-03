@@ -1,0 +1,68 @@
+﻿@model IEnumerable<EMS.Entities.Branch>
+
+@{
+    ViewData["Title"] = "BranchList";
+}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.all.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.min.css" rel="stylesheet">
+<h1>BranchList</h1>
+
+<p>
+    <a asp-action="CreateBranch">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BranchName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BranchHead)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BranchName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BranchHead)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditBranch", new { id=item.Id }) |
+                
+                    @Html.ActionLink("Delete", "DeleteBranch", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@if(TempData["Message"]!=null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Branch Created..!",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        };
+    </script>
+}
